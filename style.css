@@ -24,6 +24,14 @@ header h1 {
     letter-spacing: 0.02em;
 }
 
+.app-layout {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
 main {
     width: 340px;
     background: #0B0B0D;
@@ -32,12 +40,78 @@ main {
     padding: 20px;
 }
 
+.manual {
+    width: 300px;
+    background: #0B0B0D;
+    border: 1px solid #1C1C1E;
+    border-radius: 24px;
+    padding: 20px;
+    color: #9CA3AF;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.manual h2 {
+    font-size: 15px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.manual p {
+    margin-bottom: 14px;
+}
+
+.manual h3 {
+    font-size: 13px;
+    color: #C084FC;
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.manual ul {
+    list-style: none;
+    margin-bottom: 14px;
+}
+
+.manual ul:last-child {
+    margin-bottom: 0;
+}
+
+.manual li {
+    margin-bottom: 6px;
+    padding-left: 14px;
+    position: relative;
+}
+
+.manual li::before {
+    content: "\2013";
+    position: absolute;
+    left: 0;
+    color: #555555;
+}
+
+.manual kbd {
+    background: #1C1C1E;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+}
+
 .display {
     background: #000000;
     border-radius: 16px;
     padding: 16px 20px;
     margin-bottom: 18px;
     text-align: right;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     overflow: hidden;
 }
 
@@ -59,12 +133,20 @@ main {
 
 .display-result {
     display: block;
+    width: 100%;
     font-size: 40px;
     color: #FFFFFF;
     font-weight: 500;
     font-family: ui-monospace, monospace;
     line-height: 1.1;
-    word-break: break-all;
+    text-align: right;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.display-result::-webkit-scrollbar {
+    display: none;
 }
 
 .display-result.message {

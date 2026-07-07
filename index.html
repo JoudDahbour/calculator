@@ -11,38 +11,69 @@
         <h1>Calculator</h1>
     </header>
     
-    <main>
-        <section class="display" aria-live="polite">
-            <output class="display-previous"></output>
-            <output class="display-expression"></output>
-            <output class="display-result">0</output>
-        </section>
+    <div class="app-layout">
+        <main>
+            <section class="display" aria-live="polite">
+                <output class="display-previous"></output>
+                <output class="display-expression"></output>
+                <output class="display-result">0</output>
+            </section>
 
-        <section class="keypad">
-            <button class="key key-clear" data-action="clear">C</button>
-            <button class="key key-undo" data-action="undo">Undo</button>
-            <button class="key key-operator" data-operator="/">&divide;</button>
+            <section class="keypad">
+                <button class="key key-clear" data-action="clear">C</button>
+                <button class="key key-undo" data-action="undo">Undo</button>
+                <button class="key key-operator" data-operator="/">&divide;</button>
 
-            <button class="key key-number" data-action="number" data-value="7">7</button>
-            <button class="key key-number" data-action="number" data-value="8">8</button>
-            <button class="key key-number" data-action="number" data-value="9">9</button>
-            <button class="key key-operator" data-operator="*">&times;</button>
+                <button class="key key-number" data-action="number" data-value="7">7</button>
+                <button class="key key-number" data-action="number" data-value="8">8</button>
+                <button class="key key-number" data-action="number" data-value="9">9</button>
+                <button class="key key-operator" data-operator="*">&times;</button>
 
-            <button class="key key-number" data-action="number" data-value="4">4</button>
-            <button class="key key-number" data-action="number" data-value="5">5</button>
-            <button class="key key-number" data-action="number" data-value="6">6</button>
-            <button class="key key-operator" data-operator="-">&minus;</button>
+                <button class="key key-number" data-action="number" data-value="4">4</button>
+                <button class="key key-number" data-action="number" data-value="5">5</button>
+                <button class="key key-number" data-action="number" data-value="6">6</button>
+                <button class="key key-operator" data-operator="-">&minus;</button>
 
-            <button class="key key-number" data-action="number" data-value="1">1</button>
-            <button class="key key-number" data-action="number" data-value="2">2</button>
-            <button class="key key-number" data-action="number" data-value="3">3</button>
-            <button class="key key-operator" data-operator="+">&plus;</button>
+                <button class="key key-number" data-action="number" data-value="1">1</button>
+                <button class="key key-number" data-action="number" data-value="2">2</button>
+                <button class="key key-number" data-action="number" data-value="3">3</button>
+                <button class="key key-operator" data-operator="+">&plus;</button>
 
-            <button class="key key-number key-zero" data-value="0">0</button>
-            <button class="key key-decimal" data-action="decimal">.</button>
-            <button class="key key-equals" data-action="equals">=</button>
-        </section>
-    </main>
+                <button class="key key-number key-zero" data-value="0">0</button>
+                <button class="key key-decimal" data-action="decimal">.</button>
+                <button class="key key-equals" data-action="equals">=</button>
+            </section>
+        </main>
+
+        <aside class="manual">
+            <h2>How to Use</h2>
+            <p>A calculator for basic arithmetic that solves chained operations left to right, one pair at a time.</p>
+
+            <h3>Mouse</h3>
+            <ul>
+                <li>Tap digits, then an operator, then more digits</li>
+                <li>Press <strong>=</strong> for the result</li>
+                <li><strong>C</strong> clears everything</li>
+                <li><strong>Undo</strong> removes the last digit</li>
+            </ul>
+
+            <h3>Keyboard</h3>
+            <ul>
+                <li><kbd>0</kbd>&ndash;<kbd>9</kbd> for digits</li>
+                <li><kbd>+</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>/</kbd> for operators</li>
+                <li><kbd>Enter</kbd> for equals</li>
+                <li><kbd>Backspace</kbd> to undo the last digit</li>
+                <li><kbd>Esc</kbd> to clear</li>
+                <li>Use <kbd>&larr;</kbd> and <kbd>&rarr;</kbd> to scroll through a long number on the display</li>
+            </ul>
+
+            <h3>Good to know</h3>
+            <ul>
+                <li>Chaining example: 12 + 7 - 5 * 3 = gives 42</li>
+                <li>Dividing by zero shows a warning message!</li>
+            </ul>
+        </aside>
+    </div>
 
     <footer>
         <p>&copy; Calculator by Joud Dahbour</p>

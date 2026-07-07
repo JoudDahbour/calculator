@@ -164,6 +164,7 @@ function showDivideByZeroError(){
 
 function updateDisplay(){
     resultDisplay.textContent = display;
+    resultDisplay.scrollLeft = resultDisplay.scrollWidth;
     if (isNaN(parseFloat(display))) {
         resultDisplay.classList.add("message");
     } else {
@@ -250,6 +251,14 @@ document.addEventListener("keydown", function (event) {
   if (key === ".") {
     inputDecimal();
     updateDisplay();
+    return;
+  }
+  if (key === "ArrowLeft") {
+    resultDisplay.scrollLeft -= 20;
+    return;
+  }
+  if (key === "ArrowRight") {
+    resultDisplay.scrollLeft += 20;
     return;
   }
 });
