@@ -156,12 +156,19 @@ function showDivideByZeroError(){
     const messages = ["Nice try. Can't divide by zero.", "Division by zero? Bold move.", "That would break the universe", "Zero said no. Try again."];
     const index = Math.floor(Math.random() * messages.length);
     display = messages[index];
-    waiting = true;
     firstOperand = null;
+    currentOperator = null;
+    previousOperation = "";
+    waiting = true;
 }
 
 function updateDisplay(){
     resultDisplay.textContent = display;
+    if (isNaN(parseFloat(display))) {
+        resultDisplay.classList.add("message");
+    } else {
+        resultDisplay.classList.remove("message");
+    }
     previousDisplay.textContent = previousOperation;
 
     if (currentOperator !== null && firstOperand !== null) {

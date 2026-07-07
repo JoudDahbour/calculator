@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 15px;
+    color: #9CA3AF;
+    margin-bottom: 14px;
+    margin-left: 4px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+main {
+    width: 340px;
+    background: #0B0B0D;
+    border: 1px solid #1C1C1E;
+    border-radius: 24px;
+    padding: 20px;
+}
+
+.display {
+    background: #000000;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    text-align: right;
+    overflow: hidden;
+}
+
+.display-previous {
+    display: block;
+    font-size: 13px;
+    color: #555555;
+    min-height: 16px;
+    font-family: ui-monospace, monospace;
+}
+
+.display-expression {
+    display: block;
+    font-size: 14px;
+    color: #777777;
+    min-height: 18px;
+    font-family: ui-monospace, monospace;
+}
+
+.display-result {
+    display: block;
+    font-size: 40px;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-family: ui-monospace, monospace;
+    line-height: 1.1;
+    word-break: break-all;
+}
+
+.display-result.message {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.key {
+    height: 58px;
+    border: none;
+    border-radius: 16px;
+    font-size: 19px;
+    cursor: pointer;
+    font-family: system-ui, sans-serif;
+    background: #1C1C1E;
+    color: #FFFFFF;
+    transition: transform 0.05s ease, background 0.15s ease, filter 0.15s ease;
+}
+
+.key:hover {
+    filter: brightness(1.35);
+}
+
+.key:active {
+    transform: scale(0.96);
+}
+
+.key-operator {
+    background: #2A2A2C;
+    color: #C084FC;
+    font-size: 22px;
+}
+
+.key-operator.active {
+    background: #A855F7;
+    color: #FFFFFF;
+}
+
+.key-equals {
+    background: #A855F7;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+.key-equals:hover {
+    filter: brightness(1.1);
+}
+
+.key-clear {
+    background: #2A2A2C;
+    color: #FF453A;
+}
+
+.key-undo {
+    background: #2A2A2C;
+    color: #9CA3AF;
+    grid-column: span 2;
+}
+
+.key-zero {
+    grid-column: span 2;
+}
+
+.key:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+footer {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #555555;
+}
