@@ -31,7 +31,7 @@ function multiply(a, b){
 
 function divide(a, b){
     if (b === 0) {
-        return "Error: you can't divide by zero";
+        return null;
     }
     return a / b;
 }
