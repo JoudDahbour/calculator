@@ -177,7 +177,7 @@ function updateDisplay(){
     } else {
         expressionDisplay.textContent = "";
     }
-    decimalButton.disabled = display.includes(".");
+    decimalButton.disabled = !isNaN(parseFloat(display)) && display.includes(".");
 
     operatorButtons.forEach(function (button){
         button.classList.remove("active");
