@@ -1,10 +1,8 @@
 let display = "0";
 let firstOperand = null;
-let secondOperand = null;
 let currentOperator = null;
 let waiting = false;
 let previousOperation = "";
-let historyStack = [];
 
 const resultDisplay = document.querySelector(".display-result");
 const expressionDisplay = document.querySelector(".display-expression");
@@ -13,7 +11,6 @@ const numberButtons = document.querySelectorAll(".key-number");
 const operatorButtons = document.querySelectorAll(".key-operator");
 const equalsButton = document.querySelector(".key-equals");
 const clearButton = document.querySelector(".key-clear");
-const deleteButton = document.querySelector(".key-delete");
 const decimalButton = document.querySelector(".key-decimal");
 const undoButton = document.querySelector(".key-undo");
 
@@ -69,30 +66,6 @@ function operatorSymbol(operator){
         return "÷";
     }
     return "";
-}
-
-function saveState(){
-    historyStack.push({
-        firstOperand: firstOperand,
-        secondOperand: secondOperand,
-        operator: currentOperator,
-        display: display,
-        waiting: waiting,
-        previousOperation: previousOperation
-    });
-}
-
-function undo(){
-    if (historyStack.length === 0) {
-        return;
-    }
-    const lastState = historyStack.pop();
-    firstOperand = lastState.firstOperand;
-    secondOperand = lastState.secondOperand;
-    currentOperator = lastState.operator;
-    previousOperation = lastState.previousOperation;
-    display = lastState.display;
-    waiting = lastState.waiting;
 }
 
 function inputDigit(digit){
@@ -158,11 +131,10 @@ function handleEqual(){
     previousOperation = firstOperand + " " + operatorSymbol(currentOperator) + " " + inputValue + " = " + rounded;
     display = String(rounded);
     firstOperand = null;
-    secondOperand = null;
     waiting = true;
 }
 
-function deleteNum(){
+function undo(){
     if (waiting) {
         return;
     }
@@ -174,7 +146,6 @@ function deleteNum(){
 
 function clearAll(){
     firstOperand = null;
-    secondOperand = null;
     currentOperator = null;
     previousOperation = "";
     display = "0";
@@ -187,7 +158,6 @@ function showDivideByZeroError(){
     display = messages[index];
     waiting = true;
     firstOperand = null;
-    secondOperand = null;
 }
 
 function updateDisplay(){
@@ -200,7 +170,6 @@ function updateDisplay(){
         expressionDisplay.textContent = "";
     }
     decimalButton.disabled = display.includes(".");
-    undoButton.disabled = historyStack.length === 0;
 
     operatorButtons.forEach(function (button){
         button.classList.remove("active");
@@ -212,7 +181,6 @@ function updateDisplay(){
 
 numberButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-        saveState();
         inputDigit(button.textContent);
         updateDisplay();
     });
@@ -220,32 +188,22 @@ numberButtons.forEach(function (button) {
 
 operatorButtons.forEach(function (button) {
   button.addEventListener("click", function () {
-    saveState();
     handleOperator(button.dataset.operator);
     updateDisplay();
   });
 });
 
 equalsButton.addEventListener("click", function () {
-  saveState();
   handleEqual();
   updateDisplay();
 });
 
 clearButton.addEventListener("click", function () {
-  saveState();
   clearAll();
   updateDisplay();
 });
 
-deleteButton.addEventListener("click", function () {
-  saveState();
-  deleteNum();
-  updateDisplay();
-});
-
 decimalButton.addEventListener("click", function () {
-  saveState();
   inputDecimal();
   updateDisplay();
 });
@@ -258,43 +216,32 @@ undoButton.addEventListener("click", function () {
 document.addEventListener("keydown", function (event) {
   const key = event.key;
   if (key >= "0" && key <= "9") {
-    saveState();
     inputDigit(key);
     updateDisplay();
     return;
   }
   if (key === "+" || key === "-" || key === "*" || key === "/") {
-    saveState();
     handleOperator(key);
     updateDisplay();
     return;
   }
   if (key === "Enter" || key === "=") {
-    saveState();
     handleEqual();
     updateDisplay();
     return;
   }
   if (key === "Backspace") {
-    saveState();
-    deleteNum();
+    undo();
     updateDisplay();
     return;
   }
   if (key === "Escape") {
-    saveState();
     clearAll();
     updateDisplay();
     return;
   }
   if (key === ".") {
-    saveState();
     inputDecimal();
-    updateDisplay();
-    return;
-  }
-  if (key === "z" || key === "Z") {
-    undo();
     updateDisplay();
     return;
   }
